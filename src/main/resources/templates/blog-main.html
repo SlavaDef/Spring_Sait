@@ -18,7 +18,7 @@
     <div th:each="el : ${posts}" class="alert alert-info mt-2"> <!-- mt-2 отступ-->
         <h3 th:text="${el.title}"/>
         <p th:text="${el.anons}"/>
-        <a th:href="'/blog/' + ${el.id}">Детальніше</a> <!-- силка на блог + елемент id для кожної запісі своя силка-->
+        <a th:href="'/blog/' + ${el.id}" class="btn btn-warning">Детальніше</a> <!-- силка на блог + елемент id для кожної запісі своя силка-->
     </div>
 </div>
 

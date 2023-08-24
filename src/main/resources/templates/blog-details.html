@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Site Block</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"> <!-- інсертім кусок -->
+
+</header>
+
+
+<div class="container mt-5">
+
+    <!-- перебираємо кожній єлемент постів з масиву -->
+    <div th:each="el : ${post}" class="alert alert-info mt-2"> <!-- mt-2 отступ-->
+        <h3 th:text="${el.title}"/>
+        <p th:text="${el.full_text}"/>
+        <p><b>Views: </b> <span th:text="${el.views}"/></p> <!--кількість просм,<b>-жирний текст  -->
+        <a th:href="'/blog/' + ${el.id} +'/edit'" class="btn btn-warning">Редагувати</a> <br><br><!-- силка/кнопка на блог + елемент id для кожної запісі своя силка-->
+        <!--додаємо форму для видалення для кнопки -->
+       <form th:action="'/blog/'+${el.id}+'/remove'" method="post">
+       <button class="btn btn-warning" type="submit">Delete</button>
+       </form>
+      <!--  <a th:href="'/blog/' + ${el.id}+'/remove'" class="btn btn-warning">Delete</a> силка/кнопка на видалення -->
+    </div>
+</div>
+
+<div th:insert="blocks/footer :: footer"> <!-- інсертім кусок -->
+
+</div>
+
+</body>
+</html>
